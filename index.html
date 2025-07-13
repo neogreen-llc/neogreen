@@ -15,6 +15,27 @@
             color: #e0e0e0;
             overflow-x: hidden;
             cursor: none;
+            position: relative;
+        }
+        
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 255, 100, 0.03) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 9995;
+            mix-blend-mode: overlay;
+            animation: scanline 8s linear infinite;
+        }
+        
+        @keyframes scanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
         }
         
         a, button, [role="button"], input, textarea, select {
@@ -26,11 +47,28 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background-color: rgba(21, 202, 36, 0.651);
+            background-color: rgba(21, 202, 36, 0.8);
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
             mix-blend-mode: difference;
+            box-shadow: 0 0 15px rgba(0, 255, 100, 0.8), 
+                        0 0 30px rgba(0, 255, 150, 0.6),
+                        0 0 45px rgba(0, 255, 200, 0.4);
+            animation: cursor-pulse 1.5s infinite alternate;
+        }
+
+        @keyframes cursor-pulse {
+            0% { 
+                box-shadow: 0 0 15px rgba(0, 255, 100, 0.8), 
+                            0 0 30px rgba(0, 255, 150, 0.6),
+                            0 0 45px rgba(0, 255, 200, 0.4);
+            }
+            100% { 
+                box-shadow: 0 0 25px rgba(0, 255, 100, 1), 
+                            0 0 50px rgba(0, 255, 150, 0.8),
+                            0 0 75px rgba(0, 255, 200, 0.6);
+            }
         }
         
         /* Ensure cursor is visible over all interactive elements */
@@ -54,10 +92,32 @@
         
         .glow-text {
             text-shadow: 0 0 20px rgb(0, 255, 0);
+            animation: text-pulse 2s infinite alternate;
         }
         
         .glow-box {
             box-shadow: 0 0 15px rgba(51, 255, 0, 0.3);
+            animation: box-pulse 3s infinite alternate;
+        }
+
+        .glow-box-intense {
+            box-shadow: 0 0 25px rgba(51, 255, 0, 0.7);
+            animation: intense-pulse 1.5s infinite alternate;
+        }
+
+        @keyframes text-pulse {
+            0% { text-shadow: 0 0 20px rgb(0, 255, 0); }
+            100% { text-shadow: 0 0 30px rgb(0, 255, 150), 0 0 10px rgb(0, 255, 0); }
+        }
+
+        @keyframes box-pulse {
+            0% { box-shadow: 0 0 15px rgba(51, 255, 0, 0.3); }
+            100% { box-shadow: 0 0 25px rgba(51, 255, 0, 0.5); }
+        }
+
+        @keyframes intense-pulse {
+            0% { box-shadow: 0 0 25px rgba(51, 255, 0, 0.7); }
+            100% { box-shadow: 0 0 40px rgba(51, 255, 0, 0.9), 0 0 60px rgba(51, 255, 0, 0.5); }
         }
         
         .gradient-bg {
@@ -86,16 +146,28 @@
     </style>
 </head>
 <body class="gradient-bg min-h-screen">
+    <!-- Post Processing Effects -->
+    <div class="fixed inset-0 pointer-events-none z-[9997] mix-blend-overlay opacity-20">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,100,0.1)_0%,transparent_70%)]"></div>
+    </div>
+    <div class="fixed inset-0 pointer-events-none z-[9996] mix-blend-screen opacity-10">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,150,0.05)_0%,transparent_70%)]"></div>
+    </div>
+    
     <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
     <div class="cursor-outline"></div>
 
     <!-- Animated Background Elements -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-green-400 opacity-20 animate-pulse"></div>
-        <div class="absolute top-1/3 right-1/3 w-4 h-4 rounded-full bg-green-500 opacity-15 animate-pulse delay-100"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-2 h-2 rounded-full bg-green-300 opacity-25 animate-pulse delay-200"></div>
-        <div class="absolute bottom-1/3 left-1/3 w-5 h-5 rounded-full bg-green-600 opacity-10 animate-pulse delay-300"></div>
+        <div class="absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-green-400 opacity-20 animate-pulse glow-box"></div>
+        <div class="absolute top-1/3 right-1/3 w-4 h-4 rounded-full bg-green-500 opacity-15 animate-pulse delay-100 glow-box"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-2 h-2 rounded-full bg-green-300 opacity-25 animate-pulse delay-200 glow-box"></div>
+        <div class="absolute bottom-1/3 left-1/3 w-5 h-5 rounded-full bg-green-600 opacity-10 animate-pulse delay-300 glow-box"></div>
+        <div class="absolute top-1/6 right-1/6 w-6 h-6 rounded-full bg-green-700 opacity-5 animate-pulse delay-400 glow-box"></div>
+        <div class="absolute bottom-1/6 left-1/6 w-3 h-3 rounded-full bg-green-200 opacity-30 animate-pulse delay-500 glow-box"></div>
+        <div class="absolute top-2/3 left-1/5 w-4 h-4 rounded-full bg-green-400 opacity-20 animate-pulse delay-600 glow-box"></div>
+        <div class="absolute bottom-2/3 right-1/5 w-5 h-5 rounded-full bg-green-500 opacity-15 animate-pulse delay-700 glow-box"></div>
     </div>
 
     <!-- Navigation -->
@@ -106,10 +178,22 @@
         </div>
         
         <div class="hidden md:flex space-x-8">
-            <a href="#solutions" id="solutions-link" class="text-green-300 hover:text-green-400 transition-colors duration-300">Solutions</a>
-            <a href="#technology" id="technology-link" class="text-green-300 hover:text-green-400 transition-colors duration-300">Technology</a>
-            <a href="#about" id="about-link" class="text-green-300 hover:text-green-400 transition-colors duration-300">About</a>
-            <a href="#contact" id="contact-link" class="text-green-300 hover:text-green-400 transition-colors duration-300">Contact</a>
+            <a href="#solutions" id="solutions-link" class="text-green-300 hover:text-green-400 transition-all duration-300 relative group">
+                Solutions
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#technology" id="technology-link" class="text-green-300 hover:text-green-400 transition-all duration-300 relative group">
+                Technology
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#about" id="about-link" class="text-green-300 hover:text-green-400 transition-all duration-300 relative group">
+                About
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#contact" id="contact-link" class="text-green-300 hover:text-green-400 transition-all duration-300 relative group">
+                Contact
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
         </div>
         
         <button class="md:hidden text-green-400">
@@ -128,9 +212,18 @@
                     Cutting-edge technology solutions for tomorrow's challenges. Our AI-driven systems optimize performance and efficiency.
                 </p>
                 <div class="flex space-x-4">
-                    <button class="px-8 py-3 bg-green-600 hover:bg-green-500 text-white rounded-full font-medium transition-all duration-300 glow-box hover:glow-text">
-                        Explore Tech
-                    </button>
+                    <div class="relative group">
+                        <button class="px-8 py-3 bg-green-600 hover:bg-green-500 text-white rounded-full font-medium transition-all duration-300 glow-box hover:glow-text flex items-center">
+                            Explore Tech <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-black/90 backdrop-blur-sm rounded-xl shadow-lg border border-green-900/50 overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <a href="#" class="block px-4 py-3 text-green-300 hover:bg-green-900/30 transition-all duration-200 glow-text">NEOGREEN-API</a>
+                            <a href="#" class="block px-4 py-3 text-green-300 hover:bg-green-900/30 transition-all duration-200 glow-text">NEOGREEN-AI</a>
+                            <a href="#" class="block px-4 py-3 text-green-300 hover:bg-green-900/30 transition-all duration-200 glow-text">NEO-ALLINONE</a>
+                            <a href="#" class="block px-4 py-3 text-green-300 hover:bg-green-900/30 transition-all duration-200 glow-text">NEO-TRAVEL</a>
+                            <a href="#" class="block px-4 py-3 text-green-300 hover:bg-green-900/30 transition-all duration-200 glow-text">NEOGREEN-UNIVERSE</a>
+                        </div>
+                    </div>
                     <button class="px-8 py-3 border border-green-500 text-green-400 hover:bg-green-900/30 rounded-full font-medium transition-all duration-300">
                         Learn More
                     </button>
@@ -433,6 +526,17 @@
         setupNavLink('technology-link', 'technology');
         setupNavLink('about-link', 'about');
         setupNavLink('contact-link', 'contact');
+
+        // Tech selector functionality
+        document.querySelectorAll('.group a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const tech = this.textContent;
+                alert(`You selected ${tech}. This would navigate to the ${tech} page.`);
+                // In a real implementation, you would redirect to the appropriate page
+                // window.location.href = `/tech/${tech.toLowerCase()}`;
+            });
+        });
 
         // Start animation after page loads
         window.addEventListener('load', () => {
