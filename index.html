@@ -18,26 +18,6 @@
             position: relative;
         }
         
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 255, 100, 0.03) 50%);
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 9995;
-            mix-blend-mode: overlay;
-            animation: scanline 8s linear infinite;
-        }
-        
-        @keyframes scanline {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 100%; }
-        }
-        
         a, button, [role="button"], input, textarea, select {
             cursor: none !important;
         }
@@ -96,6 +76,26 @@
         .glow-text {
             text-shadow: 0 0 20px rgb(0, 255, 0);
             animation: text-pulse 2s infinite alternate;
+            background: linear-gradient(90deg, #00ff00, #00aaff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .glow-text-blue {
+            background: linear-gradient(90deg, #00aaff, #0066ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+        }
+
+        .glow-text-darkgreen {
+            background: linear-gradient(90deg, #006633, #00aa55);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 100, 0, 0.5);
         }
         
         .glow-box {
@@ -124,7 +124,15 @@
         }
         
         .gradient-bg {
-            background: linear-gradient(135deg, #122b00 0%, #000000 100%);
+            background: linear-gradient(135deg, #001a0d 0%, #000000 100%);
+        }
+
+        .gradient-bg-blue {
+            background: linear-gradient(135deg, #001a33 0%, #000000 100%);
+        }
+
+        .gradient-bg-darkgreen {
+            background: linear-gradient(135deg, #001f09 0%, #000000 100%);
         }
         
         .pulse {
@@ -181,7 +189,7 @@
         </div>
         
         <div class="hidden md:flex space-x-8">
-            <a href="#solutions" id="solutions-link" class="text-green-300 hover:text-green-400 transition-all duration-300 relative group">
+            <a href="#solutions" id="solutions-link" class="glow-text-darkgreen hover:glow-text transition-all duration-300 relative group">
                 Solutions
                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
@@ -205,7 +213,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
+    <section class="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto gradient-bg-darkgreen">
         <div class="flex flex-col lg:flex-row items-center">
             <div class="lg:w-1/2 mb-12 lg:mb-0">
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-green-400 glow-text leading-tight">
@@ -266,7 +274,7 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-black/20 backdrop-blur-sm p-8 rounded-xl border border-green-900/50 hover:border-green-500/50 transition-all duration-500 group">
+            <div class="bg-gradient-to-br from-green-900/20 to-black/40 backdrop-blur-sm p-8 rounded-xl border border-green-500/50 hover:border-blue-400/50 transition-all duration-500 group">
                 <div class="w-14 h-14 bg-green-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-500/20 transition-all duration-500">
                     <i class="fas fa-microchip text-green-400 text-2xl"></i>
                 </div>
@@ -420,7 +428,7 @@
     <!-- Stats Section -->
     <section class="relative z-10 py-16 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-black/20 backdrop-blur-sm p-8 rounded-xl border border-green-900/50 glow-box hover:glow-text transition-all duration-500">
+            <div class="bg-gradient-to-br from-green-900/30 to-blue-900/30 backdrop-blur-sm p-8 rounded-xl border border-green-500/50 glow-box hover:glow-text-blue transition-all duration-500">
                 <div class="text-green-400 text-4xl font-bold mb-3">98%</div>
                 <div class="text-gray-300">System efficiency in our latest processors</div>
             </div>
@@ -596,8 +604,8 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
-        <div class="bg-gradient-to-r from-green-900/30 to-black/30 rounded-2xl p-12 backdrop-blur-sm border border-green-900/50 glow-box">
+    <section class="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto gradient-bg-blue">
+        <div class="bg-gradient-to-r from-blue-900/30 to-green-900/30 rounded-2xl p-12 backdrop-blur-sm border border-blue-500/50 glow-box">
             <div class="max-w-3xl mx-auto text-center">
                 <h2 class="text-3xl sm:text-4xl font-bold text-green-400 mb-6 glow-text">Join the Future</h2>
                 <p class="text-gray-300 mb-8">Be part of the movement shaping tomorrow's technology landscape. Our solutions are transforming industries worldwide.</p>
@@ -656,10 +664,20 @@
             if (e.button === 0) { // Left click
                 cursorOutline.style.width = '60px';
                 cursorOutline.style.height = '60px';
+            } else if (e.button === 1) { // Middle click
+                cursor.style.width = '10px';
+                cursor.style.height = '10px';
             } else if (e.button === 2) { // Right click
                 cursorOutline.style.width = '30px';
                 cursorOutline.style.height = '30px';
             }
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursorOutline.style.width = '40px';
+            cursorOutline.style.height = '40px';
+            cursor.style.width = '20px';
+            cursor.style.height = '20px';
         });
 
         document.addEventListener('mouseup', () => {
