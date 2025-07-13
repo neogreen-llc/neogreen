@@ -47,27 +47,30 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background-color: rgba(21, 202, 36, 0.8);
+            background-color: rgba(21, 255, 36, 0.9);
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
             mix-blend-mode: difference;
-            box-shadow: 0 0 15px rgba(0, 255, 100, 0.8), 
-                        0 0 30px rgba(0, 255, 150, 0.6),
-                        0 0 45px rgba(0, 255, 200, 0.4);
-            animation: cursor-pulse 1.5s infinite alternate;
+            box-shadow: 0 0 20px rgba(0, 255, 100, 1), 
+                        0 0 40px rgba(0, 255, 150, 0.8),
+                        0 0 60px rgba(0, 255, 200, 0.6),
+                        0 0 80px rgba(0, 255, 255, 0.4);
+            animation: cursor-pulse 1s infinite alternate;
         }
 
         @keyframes cursor-pulse {
             0% { 
-                box-shadow: 0 0 15px rgba(0, 255, 100, 0.8), 
-                            0 0 30px rgba(0, 255, 150, 0.6),
-                            0 0 45px rgba(0, 255, 200, 0.4);
+                box-shadow: 0 0 20px rgba(0, 255, 100, 1), 
+                            0 0 40px rgba(0, 255, 150, 0.8),
+                            0 0 60px rgba(0, 255, 200, 0.6),
+                            0 0 80px rgba(0, 255, 255, 0.4);
             }
             100% { 
-                box-shadow: 0 0 25px rgba(0, 255, 100, 1), 
-                            0 0 50px rgba(0, 255, 150, 0.8),
-                            0 0 75px rgba(0, 255, 200, 0.6);
+                box-shadow: 0 0 30px rgba(0, 255, 100, 1), 
+                            0 0 60px rgba(0, 255, 150, 1),
+                            0 0 90px rgba(0, 255, 200, 0.8),
+                            0 0 120px rgba(0, 255, 255, 0.6);
             }
         }
         
@@ -212,19 +215,10 @@
                     Cutting-edge technology solutions for tomorrow's challenges. Our AI-driven systems optimize performance and efficiency.
                 </p>
                 <div class="flex space-x-4">
-                    <div class="relative group">
-                        <button class="px-8 py-3 bg-green-600 hover:bg-green-500 text-white rounded-full font-medium transition-all duration-300 glow-box hover:glow-text flex items-center">
-                            Explore Tech <i class="fas fa-chevron-down ml-2 text-sm"></i>
-                        </button>
-                        <div class="absolute left-0 mt-2 w-48 bg-black/90 backdrop-blur-sm rounded-xl shadow-lg border border-green-900/50 overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                            <a href="#" class="block px-4 py-3 text-green-300 hover:bg-green-900/30 transition-all duration-200 glow-text">NEOGREEN-API</a>
-                            <a href="#" class="block px-4 py-3 text-green-300 hover:bg-green-900/30 transition-all duration-200 glow-text">NEOGREEN-AI</a>
-                            <a href="#" class="block px-4 py-3 text-green-300 hover:bg-green-900/30 transition-all duration-200 glow-text">NEO-ALLINONE</a>
-                            <a href="#" class="block px-4 py-3 text-green-300 hover:bg-green-900/30 transition-all duration-200 glow-text">NEO-TRAVEL</a>
-                            <a href="#" class="block px-4 py-3 text-green-300 hover:bg-green-900/30 transition-all duration-200 glow-text">NEOGREEN-UNIVERSE</a>
-                        </div>
-                    </div>
-                    <button class="px-8 py-3 border border-green-500 text-green-400 hover:bg-green-900/30 rounded-full font-medium transition-all duration-300">
+                    <button id="explore-tech-btn" class="px-8 py-3 bg-green-600 hover:bg-green-500 text-white rounded-full font-medium transition-all duration-300 glow-box hover:glow-text">
+                        Explore Tech
+                    </button>
+                    <button id="learn-more-btn" class="px-8 py-3 border border-green-500 text-green-400 hover:bg-green-900/30 rounded-full font-medium transition-all duration-300">
                         Learn More
                     </button>
                 </div>
@@ -240,6 +234,27 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Tech Buttons Section -->
+    <section id="tech-buttons" class="relative z-10 py-12 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto hidden">
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="#neogreen-api" class="px-6 py-3 bg-green-900/30 hover:bg-green-900/50 text-green-300 rounded-full font-medium transition-all duration-300 glow-box hover:glow-text border border-green-900/50">
+                NEOGREEN-API
+            </a>
+            <a href="#neogreen-ai" class="px-6 py-3 bg-green-900/30 hover:bg-green-900/50 text-green-300 rounded-full font-medium transition-all duration-300 glow-box hover:glow-text border border-green-900/50">
+                NEOGREEN-AI
+            </a>
+            <a href="#neo-allinone" class="px-6 py-3 bg-green-900/30 hover:bg-green-900/50 text-green-300 rounded-full font-medium transition-all duration-300 glow-box hover:glow-text border border-green-900/50">
+                NEO-ALLINONE
+            </a>
+            <a href="#neo-travel" class="px-6 py-3 bg-green-900/30 hover:bg-green-900/50 text-green-300 rounded-full font-medium transition-all duration-300 glow-box hover:glow-text border border-green-900/50">
+                NEO-TRAVEL
+            </a>
+            <a href="#neogreen-universe" class="px-6 py-3 bg-green-900/30 hover:bg-green-900/50 text-green-300 rounded-full font-medium transition-all duration-300 glow-box hover:glow-text border border-green-900/50">
+                NEOGREEN-UNIVERSE
+            </a>
         </div>
     </section>
 
@@ -364,6 +379,44 @@
         </div>
     </section>
 
+    <!-- About NEOGREEN Section -->
+    <section id="about-neogreen" class="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto hidden">
+        <div class="bg-black/20 backdrop-blur-sm p-8 rounded-xl border border-green-900/50">
+            <h2 class="text-3xl font-bold text-green-400 mb-6 glow-text">About NEOGREEN</h2>
+            <div class="prose prose-invert max-w-none">
+                <p class="text-gray-300 mb-4">NEOGREEN represents the pinnacle of sustainable technological innovation, combining cutting-edge quantum computing with environmentally conscious design principles. Our platform serves as a nexus between advanced computational capabilities and ecological responsibility.</p>
+                
+                <p class="text-gray-300 mb-4">At its core, NEOGREEN is built upon three foundational pillars: quantum processing efficiency, artificial intelligence optimization, and sustainable energy utilization. These elements work in concert to deliver unprecedented performance while maintaining minimal environmental impact.</p>
+                
+                <h3 class="text-xl font-medium text-green-300 mb-3 mt-6">Quantum Architecture</h3>
+                <p class="text-gray-300 mb-4">Our quantum processors leverage superposition and entanglement principles to achieve computational speeds that dwarf traditional binary systems. This quantum advantage translates to real-world benefits including:</p>
+                <ul class="text-gray-300 mb-4 list-disc pl-6 space-y-2">
+                    <li>Exponential reduction in energy consumption per computation</li>
+                    <li>Simultaneous processing of complex variables</li>
+                    <li>Native support for probabilistic algorithms</li>
+                </ul>
+                
+                <h3 class="text-xl font-medium text-green-300 mb-3 mt-6">AI Integration</h3>
+                <p class="text-gray-300 mb-4">The NEOGREEN AI framework operates as a self-optimizing neural network that continuously adapts to user needs while maintaining strict energy efficiency protocols. Key features include:</p>
+                <ul class="text-gray-300 mb-4 list-disc pl-6 space-y-2">
+                    <li>Dynamic resource allocation based on predictive modeling</li>
+                    <li>Autonomous system diagnostics and maintenance</li>
+                    <li>Context-aware computational prioritization</li>
+                </ul>
+                
+                <h3 class="text-xl font-medium text-green-300 mb-3 mt-6">Sustainability Model</h3>
+                <p class="text-gray-300 mb-4">Our patented energy redistribution system ensures that all computational processes adhere to strict sustainability guidelines:</p>
+                <ul class="text-gray-300 mb-4 list-disc pl-6 space-y-2">
+                    <li>98.7% energy recapture from thermal output</li>
+                    <li>Carbon-negative server infrastructure</li>
+                    <li>Biodegradable component architecture</li>
+                </ul>
+                
+                <p class="text-gray-300 mt-6">The NEOGREEN platform represents more than just technological advancement - it embodies a paradigm shift in how computational resources interact with our ecosystem. By harnessing quantum phenomena while respecting planetary boundaries, we've created a system that pushes the boundaries of what's possible while preserving what's essential.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Stats Section -->
     <section class="relative z-10 py-16 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -412,6 +465,132 @@
                 </div>
                 <h3 class="text-xl font-medium text-green-300 mb-3">Distributed Systems</h3>
                 <p class="text-gray-400">Scalable architecture for high-performance applications.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Sections -->
+    <section id="neogreen-api" class="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
+        <div class="bg-black/20 backdrop-blur-sm p-8 rounded-xl border border-green-900/50">
+            <h2 class="text-3xl font-bold text-green-400 mb-6 glow-text">NEOGREEN-API</h2>
+            <p class="text-gray-300 mb-6">Our powerful API platform for integrating quantum computing capabilities into your applications.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-xl font-medium text-green-300 mb-3">Features</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Quantum processing endpoints</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> AI-assisted optimization</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Real-time analytics</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-medium text-green-300 mb-3">Benefits</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> 99.9% uptime guarantee</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Scalable architecture</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Energy-efficient processing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="neogreen-ai" class="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
+        <div class="bg-black/20 backdrop-blur-sm p-8 rounded-xl border border-green-900/50">
+            <h2 class="text-3xl font-bold text-green-400 mb-6 glow-text">NEOGREEN-AI</h2>
+            <p class="text-gray-300 mb-6">Advanced artificial intelligence systems with quantum-enhanced learning capabilities.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-xl font-medium text-green-300 mb-3">Features</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Neural quantum networks</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Predictive analytics</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Autonomous optimization</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-medium text-green-300 mb-3">Benefits</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> 100x faster processing</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Self-learning algorithms</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Energy-conscious computing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="neo-allinone" class="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
+        <div class="bg-black/20 backdrop-blur-sm p-8 rounded-xl border border-green-900/50">
+            <h2 class="text-3xl font-bold text-green-400 mb-6 glow-text">NEO-ALLINONE</h2>
+            <p class="text-gray-300 mb-6">Comprehensive solution combining quantum computing, AI, and sustainable architecture.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-xl font-medium text-green-300 mb-3">Features</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Integrated quantum-AI core</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Unified management console</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Cross-platform compatibility</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-medium text-green-300 mb-3">Benefits</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Single solution for all needs</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Reduced infrastructure costs</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Simplified deployment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="neo-travel" class="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
+        <div class="bg-black/20 backdrop-blur-sm p-8 rounded-xl border border-green-900/50">
+            <h2 class="text-3xl font-bold text-green-400 mb-6 glow-text">NEO-TRAVEL</h2>
+            <p class="text-gray-300 mb-6">Quantum-powered travel optimization and logistics platform.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-xl font-medium text-green-300 mb-3">Features</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Route optimization</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Carbon footprint analysis</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Real-time traffic prediction</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-medium text-green-300 mb-3">Benefits</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> 30% reduced travel time</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> 40% lower emissions</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Dynamic itinerary planning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="neogreen-universe" class="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
+        <div class="bg-black/20 backdrop-blur-sm p-8 rounded-xl border border-green-900/50">
+            <h2 class="text-3xl font-bold text-green-400 mb-6 glow-text">NEOGREEN-UNIVERSE</h2>
+            <p class="text-gray-300 mb-6">Our most advanced platform for quantum simulation and universe modeling.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-xl font-medium text-green-300 mb-3">Features</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Quantum universe simulation</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Multidimensional modeling</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Predictive cosmic analytics</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-medium text-green-300 mb-3">Benefits</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Scientific breakthrough potential</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Advanced quantum research</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Unlimited simulation scale</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -527,14 +706,49 @@
         setupNavLink('about-link', 'about');
         setupNavLink('contact-link', 'contact');
 
-        // Tech selector functionality
-        document.querySelectorAll('.group a').forEach(link => {
+        // Learn More button functionality
+        document.getElementById('learn-more-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            // Hide all sections first
+            document.querySelectorAll('section[id]').forEach(section => {
+                section.classList.add('hidden');
+            });
+            // Show the about section
+            const aboutSection = document.getElementById('about-neogreen');
+            aboutSection.classList.remove('hidden');
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Explore Tech button functionality
+        document.getElementById('explore-tech-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            const techButtons = document.getElementById('tech-buttons');
+            techButtons.classList.toggle('hidden');
+            
+            if (!techButtons.classList.contains('hidden')) {
+                techButtons.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Handle tech button clicks
+        document.querySelectorAll('#tech-buttons a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const tech = this.textContent;
-                alert(`You selected ${tech}. This would navigate to the ${tech} page.`);
-                // In a real implementation, you would redirect to the appropriate page
-                // window.location.href = `/tech/${tech.toLowerCase()}`;
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    // Hide all other sections first
+                    document.querySelectorAll('section[id]').forEach(section => {
+                        if (section.id !== targetId) {
+                            section.classList.add('hidden');
+                        }
+                    });
+                    
+                    // Show the target section
+                    targetSection.classList.remove('hidden');
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
 
