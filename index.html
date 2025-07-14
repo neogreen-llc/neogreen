@@ -16,6 +16,8 @@
             overflow-x: hidden;
             cursor: none;
             position: relative;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
         }
         
         a, button, [role="button"], input, textarea, select {
@@ -122,6 +124,59 @@
             0% { box-shadow: 0 0 25px rgba(51, 255, 0, 0.7); }
             100% { box-shadow: 0 0 40px rgba(51, 255, 0, 0.9), 0 0 60px rgba(51, 255, 0, 0.5); }
         }
+
+        @keyframes slideInFromTop {
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromBottom {
+            0% { transform: translateY(100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromLeft {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromRight {
+            0% { transform: translateX(100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes rotateSlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes scalePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes neonFlicker {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+                opacity: 0.99;
+                text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+            }
+            20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+                opacity: 0.4;
+                text-shadow: none;
+            }
+        }
         
         .gradient-bg {
             background: linear-gradient(135deg, #001a0d 0%, #000000 100%);
@@ -182,7 +237,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="relative z-10 py-6 px-4 sm:px-8 lg:px-16 flex justify-between items-center">
+    <nav class="relative z-10 py-6 px-4 sm:px-8 lg:px-16 flex justify-between items-center" style="opacity: 0; animation: slideInFromTop 0.8s ease-out 0.2s forwards;">
         <div class="flex items-center space-x-2">
             <div class="hexagon w-8 h-8 bg-green-500 glow-box"></div>
             <span class="text-xl font-bold text-green-400 glow-text">NEOGREEN</span>
@@ -213,7 +268,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto gradient-bg-darkgreen">
+    <section class="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto gradient-bg-darkgreen" style="opacity: 0; animation: slideInFromLeft 0.8s ease-out 0.4s forwards;">
         <div class="flex flex-col lg:flex-row items-center">
             <div class="lg:w-1/2 mb-12 lg:mb-0">
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-green-400 glow-text leading-tight">
@@ -246,7 +301,7 @@
     </section>
 
     <!-- Tech Buttons Section -->
-    <section id="tech-buttons" class="relative z-10 py-12 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto hidden">
+    <section id="tech-buttons" class="relative z-10 py-12 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto hidden" style="opacity: 0; animation: slideInFromBottom 0.8s ease-out 0.6s forwards;">
         <div class="flex flex-wrap justify-center gap-4">
             <a href="#neogreen-api" class="px-6 py-3 bg-green-900/30 hover:bg-green-900/50 text-green-300 rounded-full font-medium transition-all duration-300 glow-box hover:glow-text border border-green-900/50">
                 NEOGREEN-API
@@ -428,6 +483,20 @@
     <!-- Stats Section -->
     <section class="relative z-10 py-16 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gradient-to-br from-green-900/30 to-blue-900/30 backdrop-blur-sm p-8 rounded-xl border border-green-500/50 glow-box hover:glow-text-blue transition-all duration-500" style="opacity: 0; animation: slideInFromLeft 0.8s ease-out 0.8s forwards;">
+                <div class="text-green-400 text-4xl font-bold mb-3">98%</div>
+                <div class="text-gray-300">System efficiency in our latest processors</div>
+            </div>
+            <div class="bg-black/20 backdrop-blur-sm p-8 rounded-xl border border-green-900/50 glow-box hover:glow-text transition-all duration-500" style="opacity: 0; animation: fadeIn 1s ease-out 1s forwards;">
+                <div class="text-green-400 text-4xl font-bold mb-3">24/7</div>
+                <div class="text-gray-300">AI monitoring for optimal system performance</div>
+            </div>
+            <div class="bg-black/20 backdrop-blur-sm p-8 rounded-xl border border-green-900/50 glow-box hover:glow-text transition-all duration-500" style="opacity: 0; animation: slideInFromRight 0.8s ease-out 0.8s forwards;">
+                <div class="text-green-400 text-4xl font-bold mb-3">10K+</div>
+                <div class="text-gray-300">Systems deployed worldwide</div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="bg-gradient-to-br from-green-900/30 to-blue-900/30 backdrop-blur-sm p-8 rounded-xl border border-green-500/50 glow-box hover:glow-text-blue transition-all duration-500">
                 <div class="text-green-400 text-4xl font-bold mb-3">98%</div>
                 <div class="text-gray-300">System efficiency in our latest processors</div>
@@ -445,6 +514,36 @@
 
     <!-- Features Section -->
     <section class="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
+        <div class="text-center mb-16" style="opacity: 0; animation: fadeIn 1s ease-out 1.2s forwards;">
+            <h2 class="text-3xl sm:text-4xl font-bold text-green-400 mb-4 glow-text">Core Technologies</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Harnessing cutting-edge technology to build solutions for modern challenges</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-black/20 backdrop-blur-sm p-8 rounded-xl border border-green-900/50 hover:border-green-500/50 transition-all duration-500 group" style="opacity: 0; animation: slideInFromLeft 0.8s ease-out 1.4s forwards;">
+                <div class="w-14 h-14 bg-green-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-500/20 transition-all duration-500">
+                    <i class="fas fa-solar-panel text-green-400 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-medium text-green-300 mb-3">Quantum Computing</h3>
+                <p class="text-gray-400">Next-generation processors with unprecedented efficiency rates.</p>
+            </div>
+            
+            <div class="bg-black/20 backdrop-blur-sm p-8 rounded-xl border border-green-900/50 hover:border-green-500/50 transition-all duration-500 group" style="opacity: 0; animation: fadeIn 1s ease-out 1.6s forwards;">
+                <div class="w-14 h-14 bg-green-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-500/20 transition-all duration-500">
+                    <i class="fas fa-brain text-green-400 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-medium text-green-300 mb-3">AI Optimization</h3>
+                <p class="text-gray-400">Machine learning algorithms that dynamically adjust energy distribution.</p>
+            </div>
+            
+            <div class="bg-black/20 backdrop-blur-sm p-8 rounded-xl border border-green-900/50 hover:border-green-500/50 transition-all duration-500 group" style="opacity: 0; animation: slideInFromRight 0.8s ease-out 1.4s forwards;">
+                <div class="w-14 h-14 bg-green-900/30 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-500/20 transition-all duration-500">
+                    <i class="fas fa-recycle text-green-400 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-medium text-green-300 mb-3">Distributed Systems</h3>
+                <p class="text-gray-400">Scalable architecture for high-performance applications.</p>
+            </div>
+        </div>
         <div class="text-center mb-16">
             <h2 class="text-3xl sm:text-4xl font-bold text-green-400 mb-4 glow-text">Core Technologies</h2>
             <p class="text-gray-400 max-w-2xl mx-auto">Harnessing cutting-edge technology to build solutions for modern challenges</p>
@@ -773,6 +872,34 @@
         // Start animation after page loads
         window.addEventListener('load', () => {
             setTimeout(animateHexagon, 1000);
+            
+            // Add floating animation to background elements
+            const bgElements = document.querySelectorAll('.fixed.inset-0.overflow-hidden.pointer-events-none div');
+            bgElements.forEach((el, index) => {
+                el.style.animation = `float ${3 + index * 0.5}s ease-in-out infinite`;
+            });
+
+            // Add hover effects to all buttons
+            const buttons = document.querySelectorAll('button, a[role="button"]');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    button.style.transform = 'scale(1.05)';
+                    button.style.transition = 'transform 0.3s ease';
+                });
+                button.addEventListener('mouseleave', () => {
+                    button.style.transform = 'scale(1)';
+                });
+            });
+
+            // Add flicker effect to glow text
+            const glowTexts = document.querySelectorAll('.glow-text');
+            glowTexts.forEach(text => {
+                text.style.animation = 'neonFlicker 3s infinite alternate';
+            });
+
+            // Add subtle rotation to hexagon logo
+            const hexagonLogo = document.querySelector('.hexagon.w-8.h-8');
+            hexagonLogo.style.animation = 'rotateSlow 20s linear infinite';
             
             // Enhanced scroll animation for sections
             const sections = document.querySelectorAll('section');
